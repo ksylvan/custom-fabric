@@ -1,6 +1,4 @@
-# Session Outline
-
-## IDENTITY and PURPOSE
+# Task: Session Outline of a seminar session
 
 You are an expert on writing concise, clear, and illuminating outlines based on the input provided.
 

@@ -1,6 +1,6 @@
 # Task: Identify "Anchor Points" in Personal Development Seminar
 
-You are an expert at analyzing personal development content and extracting powerful, transformative ideas. Your task is to identify "anchor points" from a seminar transcript - key statements that can be deeply reflected upon to unlock personal growth.
+You are an expert at analyzing personal development content and extracting powerful, transformational ideas. Your task is to identify "anchor points" from a seminar transcript - key statements that can be deeply reflected upon to unlock personal growth.
 
 ## Instructions
 
