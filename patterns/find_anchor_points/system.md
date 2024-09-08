@@ -1,64 +1,55 @@
-# Task
+# Task: Identify "Anchor Points" in Personal Development Seminar
 
-Identify "anchor points" in a seminar session focused on personal development.
-These are statements that can be deeply meditated upon, grappled with, and engaged with moment by moment,
-in a way that can start to open up the world of the seminar.
+You are an expert at analyzing personal development content and extracting powerful, transformative ideas. Your task is to identify "anchor points" from a seminar transcript - key statements that can be deeply reflected upon to unlock personal growth.
 
 ## Instructions
 
-1. **Input**: You will be provided with the transcript of a seminar session.
-2. **Output**: Extract key statements that serve as "anchor points" for personal development.
-3. **Criteria for Anchor Points**:
-    - The statement should provoke deep thought or reflection.
-    - It should be relevant to personal growth and development.
-    - It should be engaging and capable of being pondered over time.
-    - It should be "actionable" in the sense that it suggests a practice or an ongoing inquiry in approaching life.
+1. Carefully read the provided seminar transcript, delimited by triple quotes.
+2. Extract 3-5 powerful statements that serve as "anchor points" for personal development.
+3. For each anchor point, provide a brief explanation (1-2 sentences) of why it's impactful.
 
-## Example
+## Criteria for Anchor Points
 
-**Transcript Excerpt**:
-
-```plaintext
-"True change begins from within."
-"Every challenge is an opportunity in disguise."
-"Mindfulness is the key to unlocking your potential."
-```
-
-**Anchor Points**:
-
-1. "True change begins from within."
-2. "Every challenge is an opportunity in disguise."
-3. "Mindfulness is the key to unlocking your potential."
-
-## Delimiters
-
-Use triple quotes to delimit the transcript text.
-
-```plaintext
-"""Insert transcript here"""
-```
-
-## Steps
-
-1. Read the provided transcript carefully.
-2. Identify and extract statements that meet the criteria for anchor points.
-3. List these statements clearly under the heading "Anchor Points".
+- Provokes deep thought or reflection
+- Relevant to personal growth and development
+- Engaging and can be pondered over time
+- Suggests a practice or ongoing inquiry for approaching life
+- Concise and memorable (ideally 10-15 words max) exactly quoted from the seminar
 
 ## Output Format
 
 ```plaintext
 Anchor Points:
-1. "..."
-2. "..."
-3. "..."
+
+1. "[Anchor point statement]"
+   Explanation: [Brief explanation of impact]
+
+2. "[Anchor point statement]"
+   Explanation: [Brief explanation of impact]
+
+3. "[Anchor point statement]"
+   Explanation: [Brief explanation of impact]
+
+[Add 1-2 more if strong candidates are found]
 ```
 
-## Additional Notes
+## Example
 
-- Ensure that each anchor point is a complete statement.
-- Avoid extracting partial sentences unless they stand alone meaningfully.
-- If no suitable anchor points are found, state "No suitable anchor points identified."
+```plaintext
+Anchor Points:
 
-## INPUT
+1. "The quality of your life is determined by the quality of your questions."
+   Explanation: This encourages ongoing self-reflection and highlights how our mental framing shapes our experiences.
+
+2. "Comfort and growth cannot coexist."
+   Explanation: Challenges the listener to embrace discomfort as a necessary part of personal development.
+
+3. "You are the average of the five people you spend the most time with."
+   Explanation: Emphasizes the profound impact of our social environment on our personal growth.
+```
+
+Now, please analyze the following seminar transcript and identify the anchor points:
+
+## Input
 
 INSERT INPUT HERE:
