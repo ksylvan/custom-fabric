@@ -12,7 +12,7 @@ if (-Not (Test-Path -Path $PATTERNS_DIR -PathType Container)) {
 }
 
 Write-Host "Updating Fabric configuration with custom patterns..."
-Copy-Item -Path "patterns\*" -Destination $PATTERNS_DIR -Recurse
+Copy-Item -Path "patterns\*" -Destination $PATTERNS_DIR -Recurse -Force
 
 # Copy each script in the scripts directory to the fabric configuration directory
 $SCRIPTS_DIR = "scripts"
