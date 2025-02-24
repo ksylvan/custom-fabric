@@ -13,3 +13,8 @@ fi
 
 echo "Updating Fabric configuration with custom patterns..."
 cp -r patterns/* "${PATTERNS_DIR}"
+
+for file in scripts/*.inc; do
+    cp "$file" "${FABRIC_CONFIG_DIR}"
+    echo Copied "$file" to "${FABRIC_CONFIG_DIR}"
+done
