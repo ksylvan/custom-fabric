@@ -54,3 +54,9 @@ function yt {
     )
     fabric -y $videoLink --transcript
 }
+
+# Check if the file model-defs.ps1 exists in $HOME/.config/fabric and source it if it does
+$modelDefsPath = Join-Path $HOME ".config/fabric/model-defs.ps1"
+if (Test-Path -Path $modelDefsPath) {
+    . $modelDefsPath
+}

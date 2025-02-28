@@ -14,3 +14,10 @@ yt() {
     local video_link="$1"
     fabric -y "$video_link" --transcript
 }
+
+# Check if the model-defs.inc file exists in the ~/.config/fabric directory
+model_defs_file="$HOME/.config/fabric/model-defs.inc"
+if [ -f "$model_defs_file" ]; then
+    # Source the model-defs.inc file
+    . "$model_defs_file"
+fi
