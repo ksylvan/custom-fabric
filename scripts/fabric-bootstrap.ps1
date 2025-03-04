@@ -49,10 +49,37 @@ function $patternName {
 function yt {
     [CmdletBinding()]
     param(
-        [Parameter(Mandatory = $true)]
+        [Parameter(Position = 0)]
+        [string]$firstArg,
+
+        [Parameter(Position = 1)]
         [string]$videoLink
     )
-    fabric -y $videoLink --transcript
+
+    begin {
+        $transcriptFlag = "--transcript"
+    }
+
+    process {
+        if ($firstArg -eq "-t" -or $firstArg -eq "--timestamps") {
+            $transcriptFlag = "--transcript-with-timestamps"
+            $videoLink = $videoLink
+        }
+        else {
+            $videoLink = $firstArg
+        }
+
+        if (-not $videoLink) {
+            Write-Error "Usage: yt [-t | --timestamps] youtube-link"
+            return
+        }
+    }
+
+    end {
+        if ($videoLink) {
+            fabric -y $videoLink $transcriptFlag
+        }
+    }
 }
 
 # Check if the file model-defs.ps1 exists in $HOME/.config/fabric and source it if it does
