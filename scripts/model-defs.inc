@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Some noteworthy models to auto-complete in the shell via $MODEL_<tab>
 export MODEL_GPT=o3-mini
 export MODEL_LLAMA=deepseek-r1:latest
