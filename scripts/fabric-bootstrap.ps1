@@ -49,26 +49,22 @@ function $patternName {
 function yt {
     [CmdletBinding()]
     param(
-        [Parameter(Position = 0)]
-        [string]$firstArg,
+        [Parameter()]
+        [Alias("timestamps")]
+        [switch]$t,
 
-        [Parameter(Position = 1)]
+        [Parameter(Position = 0, ValueFromPipeline = $true)]
         [string]$videoLink
     )
 
     begin {
         $transcriptFlag = "--transcript"
+        if ($t) {
+            $transcriptFlag = "--transcript-with-timestamps"
+        }
     }
 
     process {
-        if ($firstArg -eq "-t" -or $firstArg -eq "--timestamps") {
-            $transcriptFlag = "--transcript-with-timestamps"
-            $videoLink = $videoLink
-        }
-        else {
-            $videoLink = $firstArg
-        }
-
         if (-not $videoLink) {
             Write-Error "Usage: yt [-t | --timestamps] youtube-link"
             return
@@ -77,6 +73,7 @@ function yt {
 
     end {
         if ($videoLink) {
+            # Execute and allow output to flow through the pipeline
             fabric -y $videoLink $transcriptFlag
         }
     }
