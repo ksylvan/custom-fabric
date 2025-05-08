@@ -45,7 +45,7 @@ file contains brief one-line summaries of the custom patterns.
 The `update-fabric` also installs the `fabric-bootstrap` and `model-defs` scripts in
 the `$HOME/.config/fabric` directory.
 
-The bootstrap scrip implements the [Aliases for All Patterns][aliases] startup
+The bootstrap script implements the [Aliases for All Patterns][aliases] startup
 shell suggestions from the fabric project.
 
 On MacOS/Linux systems, you only have to add this line to your shell startup (in `.zshrc` or `.bashrc`):
