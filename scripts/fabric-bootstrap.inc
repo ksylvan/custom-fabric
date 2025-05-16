@@ -28,6 +28,30 @@ yt() {
     fabric -y "$video_link" $transcript_flag
 }
 
+# Use fuzzy finder to search for patterns
+if command -v fzf &>/dev/null; then
+    alias fuzzy_fabric='fabric -p $(basename $(dirname $(fzf --walker-root="$HOME/.config/fabric/patterns" --preview "cat {}" --preview-window=up:50%:wrap)))'
+fi
+
+# fabric_pattern_summary function
+fabric_pattern_summary() {
+    args=("$@")
+    instructions="
+This is the directory structure of all the Fabric Patterns
+I want you to examine all the system.md files and create an alphabetized list
+that shows simply:
+
+pattern_name - short and concise summary of its function
+
+So the list might look something like this:
+
+extract_wisdom -- Gets the most important points, quotes, etc. from a piece of text
+improve_writing -- Fixes grammar and clarity issues
+write_essay -- Converts writing to a simple, direct style (i.e. Paul Graham's style)"
+    code_helper -ignore user.md "$HOME/.config/fabric/patterns" 'Generate a summary of the fabric patterns' |
+        fabric "${args[@]}" "$instructions"
+}
+
 # Check if the model-defs.inc file exists in the ~/.config/fabric directory
 model_defs_file="$HOME/.config/fabric/model-defs.inc"
 if [ -f "$model_defs_file" ]; then

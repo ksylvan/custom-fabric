@@ -5,6 +5,7 @@
     "deepseek",
     "GROKAI",
     "GROQ",
+    "LASTEXITCODE",
     "OLLAMA",
     "qwen"
   ]
