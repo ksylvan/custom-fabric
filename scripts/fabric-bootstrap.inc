@@ -1,7 +1,21 @@
 #!/bin/bash
 
+# See if we have a CUSTOM_PATTERNS_DIRECTORY in the .env file
+_custom_patterns_dir=$(grep -E '^CUSTOM_PATTERNS_DIRECTORY=' "$HOME/.config/fabric/.env" | cut -d '=' -f 2-)
+
 # Loop through all files in the ~/.config/fabric/patterns directory
-for pattern_file in "$HOME"/.config/fabric/patterns/*; do
+_dirs=("$HOME/.config/fabric/patterns"/*)
+if [ -n "$_custom_patterns_dir" ] && [ -d "$_custom_patterns_dir" ]; then
+    # If CUSTOM_PATTERNS_DIRECTORY is set and is a directory, add its contents to the array
+    _dirs+=("$_custom_patterns_dir"/*)
+fi
+
+for pattern_file in "${_dirs[@]}"; do
+    # skip anything that is not a directory
+    if [ ! -d "$pattern_file" ]; then
+        continue
+    fi
+
     # Get the base name of the file (i.e., remove the directory path)
     pattern_name=$(basename "$pattern_file")
 

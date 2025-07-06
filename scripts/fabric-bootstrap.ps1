@@ -1,10 +1,26 @@
-# Path to the patterns directory
-$patternsPath = Join-Path $HOME ".config/fabric/patterns"
-foreach ($patternDir in Get-ChildItem -Path $patternsPath -Directory) {
-    $patternName = $patternDir.Name
+# See if we have a CUSTOM_PATTERNS_DIRECTORY in the .env file
+$envFile = Join-Path $HOME ".config/fabric/.env"
+$customPatternsDir = $null
+if (Test-Path $envFile) {
+    $envContent = Get-Content $envFile | Where-Object { $_.Trim() -ne '' -and $_.Trim() -notlike '#*' }
+    $envHash = $envContent | ConvertFrom-StringData -Delimiter '='
+    $customPatternsDir = $envHash.CUSTOM_PATTERNS_DIRECTORY
+}
 
-    # Dynamically define a function for each pattern
-    $functionDefinition = @"
+# Path to the patterns directory
+$defaultPatternsPath = Join-Path $HOME ".config/fabric/patterns"
+$patternPaths = @($defaultPatternsPath)
+
+if (-not [string]::IsNullOrEmpty($customPatternsDir) -and (Test-Path -Path $customPatternsDir -PathType Container)) {
+    $patternPaths += $customPatternsDir
+}
+
+foreach ($path in $patternPaths) {
+    foreach ($patternDir in Get-ChildItem -Path $path -Directory) {
+        $patternName = $patternDir.Name
+
+        # Dynamically define a function for each pattern
+        $functionDefinition = @"
 function $patternName {
     [CmdletBinding()]
     param(
@@ -41,8 +57,9 @@ function $patternName {
     }
 }
 "@
-    # Add the function to the current session
-    Invoke-Expression $functionDefinition
+        # Add the function to the current session
+        Invoke-Expression $functionDefinition
+    }
 }
 
 # Define the 'yt' function as well
