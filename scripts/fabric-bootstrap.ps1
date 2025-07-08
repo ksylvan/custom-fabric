@@ -3,8 +3,14 @@ $envFile = Join-Path $HOME ".config/fabric/.env"
 $customPatternsDir = $null
 if (Test-Path $envFile) {
     $envContent = Get-Content $envFile | Where-Object { $_.Trim() -ne '' -and $_.Trim() -notlike '#*' }
-    $envHash = $envContent | ConvertFrom-StringData -Delimiter '='
-    $customPatternsDir = $envHash.CUSTOM_PATTERNS_DIRECTORY
+
+    # Manually parse the .env file to handle Windows paths with backslashes
+    foreach ($line in $envContent) {
+        if ($line -match '^CUSTOM_PATTERNS_DIRECTORY=(.*)$') {
+            $customPatternsDir = $matches[1].Trim()
+            break
+        }
+    }
 }
 
 # Path to the patterns directory
