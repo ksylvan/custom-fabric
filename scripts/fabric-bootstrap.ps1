@@ -23,7 +23,8 @@ if (-not [string]::IsNullOrEmpty($customPatternsDir) -and (Test-Path -Path $cust
 
 foreach ($path in $patternPaths) {
     foreach ($patternDir in Get-ChildItem -Path $path -Directory) {
-        $patternName = $patternDir.Name
+        $prefix = $env:FABRIC_ALIAS_PREFIX ?? ''
+        $patternName = "$prefix$($patternDir.Name)"
 
         # Dynamically define a function for each pattern
         $functionDefinition = @"
