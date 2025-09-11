@@ -17,10 +17,11 @@ for pattern_file in "${_dirs[@]}"; do
     fi
 
     # Get the base name of the file (i.e., remove the directory path)
-    pattern_name="${FABRIC_ALIAS_PREFIX:-}$(basename "$pattern_file")"
+    pattern_name="$(basename "$pattern_file")"
+    alias_name="${FABRIC_ALIAS_PREFIX:-}${pattern_name}"
 
     # Create an alias in the form: alias pattern_name="fabric --pattern pattern_name"
-    alias_command="alias $pattern_name='fabric --pattern $pattern_name'"
+    alias_command="alias $alias_name='fabric --pattern $pattern_name'"
 
     # Evaluate the alias command to add it to the current shell
     eval "$alias_command"

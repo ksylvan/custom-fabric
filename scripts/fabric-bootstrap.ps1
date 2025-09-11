@@ -24,11 +24,12 @@ if (-not [string]::IsNullOrEmpty($customPatternsDir) -and (Test-Path -Path $cust
 foreach ($path in $patternPaths) {
     foreach ($patternDir in Get-ChildItem -Path $path -Directory) {
         $prefix = $env:FABRIC_ALIAS_PREFIX ?? ''
-        $patternName = "$prefix$($patternDir.Name)"
+        $patternName = "$($patternDir.Name)"
+        $aliasName = "$prefix$patternName"
 
         # Dynamically define a function for each pattern
         $functionDefinition = @"
-function $patternName {
+function $aliasName {
     [CmdletBinding()]
     param(
         [Parameter(ValueFromPipeline = `$true)]
