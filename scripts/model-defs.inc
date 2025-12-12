@@ -6,4 +6,4 @@ export MODEL_GEMINI=gemini-3-pro-preview
 export MODEL_GROKAI=grok-code-fast-1
 export MODEL_GROQ=meta-llama/llama-4-maverick-17b-128e-instruct
 export MODEL_OLLAMA=gpt-oss:latest
-export MODEL_OPENAI=gpt-5.1
+export MODEL_OPENAI=gpt-5.2
