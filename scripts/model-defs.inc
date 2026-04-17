@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Some noteworthy models to auto-complete in the shell via $MODEL_<tab>
-export MODEL_CLAUDE=claude-opus-4-6
+export MODEL_CLAUDE=claude-opus-4-7
 export MODEL_CODEX=gpt-5.4
 export MODEL_GEMINI=gemini-3-flash-preview
 export MODEL_GROKAI=grok-code-fast-1
